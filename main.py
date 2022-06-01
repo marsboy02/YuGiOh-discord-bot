@@ -3,8 +3,11 @@ from data import Token
 from HandTrap import Urara
 from discord.ext import commands
 
+# Intents 명시
+intents = discord.Intents.default()
+intents.members = True
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 @bot.event
@@ -33,6 +36,7 @@ async def Commands(ctx):
     embed.add_field(name="!안녕", value="TG 하이퍼 라이브러리언과 인사합니다", inline=False)
     embed.add_field(name="!패트랩", value="패트랩의 타이밍을 조회합니다.", inline=False)
     embed.add_field(name="!티어덱", value="마스터듀얼 티어덱을 조회합니다.", inline=False)
+    embed.add_field(name="!어드민", value="서버 어드민을 확인합니다.", inline=False)
     embed.set_footer(text="Summoned by 강형준#5876", icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
 
     await ctx.send(embed=embed)
@@ -45,6 +49,10 @@ async def UraraList(ctx):
         string += k + ' '
     await ctx.send(string)
 
+
+@bot.command(name="어드민")
+async def admin(ctx):
+    await ctx.send("서버의 어드민은 {} 입니다.".format(ctx.guild.owner))
 
 # @bot.command(name="우라라")
 # async def UraraTiming(ctx, args):
