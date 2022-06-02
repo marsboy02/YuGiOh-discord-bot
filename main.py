@@ -1,5 +1,5 @@
 import discord
-from data import Token
+#from data import Token
 from HandTrap import Urara
 from discord.ext import commands
 
