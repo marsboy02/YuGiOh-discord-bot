@@ -76,4 +76,4 @@ async def 티어덱(ctx):
     await ctx.send("티어덱 조회가 끝났습니다.")
 
 
-bot.run(Token)
+bot.run(process.env.TOKEN)
