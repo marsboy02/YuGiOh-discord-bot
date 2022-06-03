@@ -5,6 +5,7 @@ from discord.ext import commands
 
 #헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
+
 # Intents 명시
 intents = discord.Intents.default()
 intents.members = True

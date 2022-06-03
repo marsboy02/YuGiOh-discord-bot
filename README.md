@@ -8,5 +8,7 @@ $ pip3 install python3 // 파이썬 설치
 $ pip3 install discord // Linux or Mac
 $ pip install -U discord // Window
 
-$ pip install -r requirements.txt 개발환경 한번에 세팅
+$ pip install -r requirements.txt // 개발환경 한번에 세팅
+
+$ python3 main.py // 실행
 ```
