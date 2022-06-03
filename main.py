@@ -1,8 +1,10 @@
+import os
 import discord
-#from data import Token
 from HandTrap import Urara
 from discord.ext import commands
 
+#헤로쿠에서 토큰 값 받아오기
+TOKEN = os.environ.get('TOKEN')
 # Intents 명시
 intents = discord.Intents.default()
 intents.members = True
@@ -76,4 +78,4 @@ async def 티어덱(ctx):
     await ctx.send("티어덱 조회가 끝났습니다.")
 
 
-bot.run(process.env.TOKEN)
+bot.run(TOKEN)
