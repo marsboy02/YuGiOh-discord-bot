@@ -1,6 +1,7 @@
 import os
 import discord
 from HandTrap import Urara
+from tier_deck_list.season5 import tier
 from discord.ext import commands
 
 #헤로쿠에서 토큰 값 받아오기
@@ -75,6 +76,13 @@ async def 우라라(ctx, arg):
 
 @bot.command()
 async def 티어덱(ctx):
+    string = []
+    for i in range(len(tier)):
+        string += f'{i+1}티어 : '
+        for j in range(len(tier[i])):
+            string += tier[i][j] + ' '
+
+        string += '\n'
 
     await ctx.send("티어덱 조회가 끝났습니다.")
 
