@@ -4,7 +4,7 @@ from HandTrap import Urara
 from tier_deck_list.season5 import tier
 from discord.ext import commands
 
-#헤로쿠에서 토큰 값 받아오기
+# 헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
 
 # Intents 명시
@@ -67,9 +67,18 @@ async def 우라라(ctx, arg):
 
     else:
         string = ''
-        Urara_list = Urara.get(arg)
+        if Urara.get(arg) is None:
+            string += '다시 입력해 주세요!'
+        else:
+            Urara_list = Urara.get(arg)
+
         for i in range(len(Urara_list)):
-            string += str((i + 1)) + ' 순위 : ' + Urara_list[i] + '\n'
+            # 우라라 타이밍 리스트가 3개가 넘어가면 부가 설명으로 전환
+            if i >= 3:
+                string += '부가 설명 : ' + Urara_list[i] + '\n'
+
+            else:
+                string += str((i + 1)) + ' 순위 : ' + Urara_list[i] + '\n'
 
     await ctx.send(string)
 
@@ -78,7 +87,7 @@ async def 우라라(ctx, arg):
 async def 티어덱(ctx):
     string = ''
     for i in range(len(tier)):
-        string += f'{i+1}티어 : '
+        string += f'{i + 1}티어 : '
         for j in range(len(tier[i])):
             string += tier[i][j] + ' '
 
