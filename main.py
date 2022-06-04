@@ -67,18 +67,18 @@ async def 우라라(ctx, arg):
 
     else:
         string = ''
+
         if not arg in list(Urara.keys()):
             string += '다시 입력해 주세요!'
         else:
             Urara_list = Urara.get(arg)
 
-        for i in range(len(Urara_list)):
-            # 우라라 타이밍 리스트가 3개가 넘어가면 부가 설명으로 전환
-            if i >= 3:
-                string += '부가 설명 : ' + Urara_list[i] + '\n'
-
-            else:
-                string += str((i + 1)) + ' 순위 : ' + Urara_list[i] + '\n'
+            for i in range(len(Urara_list)):
+                # 우라라 타이밍 리스트가 3개가 넘어가면 부가 설명으로 전환
+                if i >= 3:
+                    string += '부가 설명 : ' + Urara_list[i] + '\n'
+                else:
+                    string += str((i + 1)) + ' 순위 : ' + Urara_list[i] + '\n'
 
     await ctx.send(string)
 
