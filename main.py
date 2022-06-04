@@ -76,7 +76,7 @@ async def 우라라(ctx, arg):
 
 @bot.command()
 async def 티어덱(ctx):
-    string = []
+    string = ''
     for i in range(len(tier)):
         string += f'{i+1}티어 : '
         for j in range(len(tier[i])):
