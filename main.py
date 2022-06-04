@@ -67,7 +67,7 @@ async def 우라라(ctx, arg):
 
     else:
         string = ''
-        if Urara.get(arg) is None:
+        if not arg in list(Urara.keys()):
             string += '다시 입력해 주세요!'
         else:
             Urara_list = Urara.get(arg)
