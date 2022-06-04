@@ -78,7 +78,7 @@ async def 우라라(ctx, arg):
                 if i >= 3:
                     string += '부가 설명 : ' + Urara_list[i] + '\n'
                 else:
-                    string += str((i + 1)) + ' 순위 : ' + Urara_list[i] + '\n'
+                    string += str((i + 1)) + '순위 : ' + Urara_list[i] + '\n'
 
     await ctx.send(string)
 
