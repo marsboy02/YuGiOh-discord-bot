@@ -1,5 +1,6 @@
 import os
 import discord
+from functions import backtick
 from HandTrap import Urara
 from tier_deck_list.season5 import tier
 from discord.ext import commands
@@ -22,7 +23,7 @@ async def on_ready():
 
 @bot.command()
 async def 안녕(ctx):
-    await ctx.send('{}님, 반갑습니다.'.format(ctx.author.mention))
+    await ctx.send(backtick('{}님, 반갑습니다.'.format(ctx.author.mention)))
 
 
 @bot.command()
@@ -40,7 +41,7 @@ async def 명령어(ctx):
 
 @bot.command()
 async def 어드민(ctx):
-    await ctx.send("서버의 어드민은 {} 입니다.".format(ctx.guild.owner))
+    await ctx.send(backtick("서버의 어드민은 {} 입니다.".format(ctx.guild.owner)))
 
 
 @bot.command()
@@ -79,7 +80,7 @@ async def 우라라(ctx, arg):
                 else:
                     string += str((i + 1)) + '순위 : ' + Urara_list[i] + '\n'
 
-    await ctx.send(string)
+    await ctx.send(backtick(string))
 
 
 @bot.command()
@@ -92,7 +93,7 @@ async def 티어덱(ctx):
 
         string += '\n'
 
-    await ctx.send('```' + string + '```')
+    await ctx.send(backtick(string))
 
 
 bot.run(TOKEN)
