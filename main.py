@@ -35,7 +35,6 @@ async def 명령어(ctx):
     embed.add_field(name="!우라라 가이드", value="우라라 명령어에 대한 가이드를 확인합니다.", inline=False)
     embed.set_footer(text="Summoned by 강형준#5876",
                      icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
-
     await ctx.send(embed=embed)
 
 
@@ -93,7 +92,7 @@ async def 티어덱(ctx):
 
         string += '\n'
 
-    await ctx.send(string)
+    await ctx.send('```' + string + '```')
 
 
 bot.run(TOKEN)
