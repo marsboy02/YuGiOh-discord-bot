@@ -23,7 +23,7 @@ async def on_ready():
 
 @bot.command()
 async def 안녕(ctx):
-    await ctx.send(backtick('{}님, 반갑습니다.'.format(ctx.author.mention)))
+    await ctx.send('{}님, 반갑습니다.'.format(ctx.author.mention))
 
 
 @bot.command()
@@ -41,15 +41,15 @@ async def 명령어(ctx):
 
 @bot.command()
 async def 어드민(ctx):
-    await ctx.send(backtick("서버의 어드민은 {} 입니다.".format(ctx.guild.owner)))
+    await ctx.send(backtick("서버의 어드민은 **_{}_** 입니다.".format(ctx.guild.owner)))
 
 
 @bot.command()
 async def 우라라(ctx, arg):
     if arg == '가이드':
-        string = '!우라라 [조회하고 싶은 덱] : 우라라 타이밍을 조회, ex)!우라라 스파이랄\n' \
-                 '!우라라 주의사항 : 하루 우라라를 사용할 때의 주의 사항\n' \
-                 '!우라라 리스트 : 우라라를 사용할 수 있는 목록을 불러옵니다.\n' \
+        string = '**!우라라 [조회하고 싶은 덱]** : 우라라 타이밍을 조회, ex)!우라라 스파이랄\n' \
+                 '**!우라라 주의사항** : 하루 우라라를 사용할 때의 주의 사항\n' \
+                 '**!우라라 리스트** : 우라라를 사용할 수 있는 목록을 불러옵니다.\n' \
                  '해당 명령어는 \'마스터듀얼 갤러리\'의 \'마스터듀얼정보글\' 님의 게시글을 참고했습니다!'
 
     elif arg == '주의사항':
@@ -78,7 +78,7 @@ async def 우라라(ctx, arg):
                 if i >= 3:
                     string += '부가 설명 : ' + Urara_list[i] + '\n'
                 else:
-                    string += str((i + 1)) + '순위 : ' + Urara_list[i] + '\n'
+                    string += '**'+str((i + 1)) + '순위** : ' + Urara_list[i] + '\n'
 
     await ctx.send(backtick(string))
 
@@ -87,7 +87,7 @@ async def 우라라(ctx, arg):
 async def 티어덱(ctx):
     string = ''
     for i in range(len(tier)):
-        string += f'{i + 1}티어 : '
+        string += f'**{i + 1}티어** : '
         for j in range(len(tier[i])):
             string += tier[i][j] + ' '
 
