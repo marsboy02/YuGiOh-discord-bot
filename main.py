@@ -90,7 +90,6 @@ async def 티어덱(ctx):
         string += f'{i + 1}티어 : '
         for j in range(len(tier[i])):
             string += tier[i][j] + ' '
-
         string += '\n'
 
     await ctx.send(backtick(string))
