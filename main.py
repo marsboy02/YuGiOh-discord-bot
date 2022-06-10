@@ -1,7 +1,7 @@
 import os
 import discord
 from functions import backtick
-from HandTrap import Urara
+from HandTrap import Urara, Usagi
 from tier_deck_list.season5 import tier
 from discord.ext import commands
 
@@ -34,9 +34,26 @@ async def 명령어(ctx):
     embed.add_field(name="!티어덱", value="마스터듀얼 티어덱을 조회합니다.", inline=False)
     embed.add_field(name="!어드민", value="서버 어드민을 확인합니다.", inline=False)
     embed.add_field(name="!우라라 가이드", value="우라라 명령어에 대한 가이드를 확인합니다.", inline=False)
+    embed.add_field(name="!유령토끼 가이드", value="유령토끼 명령어에 대한 가이드를 확인합니다.", inline=False)
+    embed.add_field(name="!서치 [카드이름]", value="카드 이름을 입력하면 카드를 서치합니다.", inline=False)
     embed.set_footer(text="Summoned by 강형준#5876",
                      icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
     await ctx.send(embed=embed)
+
+
+# 카드 서칭 명령어
+@bot.command()
+async def 서치(ctx):
+    await ctx.send('미구현입니다. 조금만 기다려 주세요!')
+
+
+# 우라라 리스트 명령어
+@bot.command()
+async def 유령토끼(ctx, arg):
+    string = ''
+    if arg == '가이드':
+        string += '미구현'
+    await ctx.send(backtick(string))
 
 
 @bot.command()
