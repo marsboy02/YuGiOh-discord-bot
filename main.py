@@ -1,7 +1,7 @@
 import os
 import discord
 from functions import backtick
-from HandTrap import Urara, Usagi
+from Handtrap import Urara, Warasi
 from tier_deck_list.season5 import tier
 from discord.ext import commands
 
@@ -34,9 +34,9 @@ async def 명령어(ctx):
     embed.add_field(name="!티어덱", value="마스터듀얼 티어덱을 조회합니다.", inline=False)
     embed.add_field(name="!어드민", value="서버 어드민을 확인합니다.", inline=False)
     embed.add_field(name="!우라라 가이드", value="우라라 명령어에 대한 가이드를 확인합니다.", inline=False)
-    embed.add_field(name="!유령토끼 가이드", value="유령토끼 명령어에 대한 가이드를 확인합니다.", inline=False)
+    embed.add_field(name="!와라시 가이드", value="와라시 명령어에 대한 가이드를 확인합니다.", inline=False)
     embed.add_field(name="!서치 [카드이름]", value="카드 이름을 입력하면 카드를 서치합니다.", inline=False)
-    embed.set_footer(text="Summoned by 강형준#5876",
+    embed.set_footer(text="Summoned by 강형준#58시6",
                      icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
     await ctx.send(embed=embed)
 
@@ -49,10 +49,29 @@ async def 서치(ctx):
 
 # 우라라 리스트 명령어
 @bot.command()
-async def 유령토끼(ctx, arg):
+async def 와라시(ctx, arg):
     string = ''
     if arg == '가이드':
-        string += '미구현'
+        string += '!와라시 [조회하고 싶은 덱] : 와라시 타이밍을 조회, ex)!와라시 드라이트론\n' \
+                  '!와라시 리스트 : 와라시를 사용할 수 있는 목록을 불러옵니다.'
+
+    elif arg == '리스트':
+        for k in Warasi.keys():
+            string += k + ' '
+
+    else:
+        if not arg in list(Warasi.keys()):
+            string += '다시 입력해 주세요!'
+        else:
+            Urara_list = Urara.get(arg)
+
+            for i in range(len(Urara_list)):
+                # 와라시 타이밍 리스트가 3개가 넘어가면 부가 설명으로 전환
+                if i >= 3:
+                    string += '부가 설명 : ' + Urara_list[i] + '\n'
+                else:
+                    string += str((i + 1)) + '순위 : ' + Urara_list[i] + '\n'
+
     await ctx.send(backtick(string))
 
 
