@@ -3,9 +3,3 @@ def backtick(string):
     return '```' + string + '```'
 
 
-# #string을 Bold으로 반환
-# def bold(string):
-#     return '**' + string + '**'
-
-
-
