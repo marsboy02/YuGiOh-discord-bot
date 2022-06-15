@@ -19,3 +19,6 @@ driver.get(url=URL)
 search_box = driver.find_element_by_id('keyword')
 search_box.send_keys(input)
 search_box.send_keys(Keys.RETURN)
+
+title = driver.find_element_by_xpath('//span[@id="card_image_0_1"]').text
+print(title)
