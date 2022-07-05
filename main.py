@@ -63,14 +63,14 @@ async def 와라시(ctx, arg):
         if not arg in list(Warasi.keys()):
             string += '다시 입력해 주세요!'
         else:
-            Urara_list = Urara.get(arg)
+            Warasi_list = Warasi.get(arg)
 
-            for i in range(len(Urara_list)):
+            for i in range(len(Warasi_list)):
                 # 와라시 타이밍 리스트가 3개가 넘어가면 부가 설명으로 전환
                 if i >= 3:
-                    string += '부가 설명 : ' + Urara_list[i] + '\n'
+                    string += '부가 설명 : ' + Warasi_list[i] + '\n'
                 else:
-                    string += str((i + 1)) + '순위 : ' + Urara_list[i] + '\n'
+                    string += str((i + 1)) + '순위 : ' + Warasi_list[i] + '\n'
 
     await ctx.send(backtick(string))
 
