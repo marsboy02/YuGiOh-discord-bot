@@ -64,8 +64,9 @@ async def 와라시(ctx, arg):
             string += '다시 입력해 주세요!'
         else:
             Warasi_list = Warasi.get(arg)
+            # 와라시는 순위가 없음
             for i in range(len(Warasi_list)):
-                string += '카드명 : ' + Warasi_list[i] + '\n'
+                string += Warasi_list[i] + '\n'
 
     await ctx.send(backtick(string))
 
