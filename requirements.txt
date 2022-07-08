@@ -55,7 +55,7 @@ PyYAML==6.0
 Question==0.1
 raven==6.10.0
 redis==3.4.1
-selenium==4.2.0
+selenium==3.141
 sentry-sdk==0.14.2
 six==1.16.0
 sniffio==1.2.0
