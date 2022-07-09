@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 URL = 'https://www.db.yugioh-card.com/yugiohdb/card_search.action'
 
 def search(input):
-    driver = webdriver.Chrome("https://github.com/heroku/heroku-buildpack-chromedriver")
+    driver = webdriver.Chrome("/app/.chromedriver/bin/chromedriver")
     driver.get(url=URL)
 
     search_box = driver.find_element_by_id('keyword')
