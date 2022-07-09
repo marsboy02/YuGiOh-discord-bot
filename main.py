@@ -1,5 +1,6 @@
 import os
 import discord
+from Selenium import *
 from functions import backtick
 from Handtrap import Urara, Warasi
 from tier_deck_list.season5 import tier
@@ -43,8 +44,8 @@ async def 명령어(ctx):
 
 # 카드 서칭 명령어
 @bot.command()
-async def 서치(ctx):
-    await ctx.send('미구현입니다. 조금만 기다려 주세요!')
+async def 서치(ctx, arg):
+    await ctx.send(search(arg))
 
 
 # 우라라 리스트 명령어
