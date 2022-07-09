@@ -1,6 +1,7 @@
 import selenium
 import time
 from selenium import webdriver
+import os
 from selenium.webdriver import ActionChains
 
 from selenium.webdriver.common.keys import Keys
@@ -10,10 +11,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
 URL = 'https://www.db.yugioh-card.com/yugiohdb/card_search.action'
 
 def search(input):
-    driver = webdriver.Chrome("/app/.chromedriver/bin/chromedriver")
+    driver = webdriver.Chrome("CHROMEDRIVER_PATH")
     driver.get(url=URL)
 
     search_box = driver.find_element_by_id('keyword')
