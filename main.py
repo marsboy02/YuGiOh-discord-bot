@@ -1,10 +1,22 @@
 import os
 import discord
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from Selenium import *
 from functions import backtick
 from Handtrap import Urara, Warasi
 from tier_deck_list.season5 import tier
 from discord.ext import commands
+
+# 크롤링 환경 설정
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+URL = 'https://www.db.yugioh-card.com/yugiohdb/card_search.action'
 
 # 헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
