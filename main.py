@@ -57,7 +57,26 @@ async def 명령어(ctx):
 # 카드 서칭 명령어
 @bot.command()
 async def 서치(ctx, arg):
-    await ctx.send(search(arg))
+    driver = webdriver.Chrome("CHROMEDRIVER_PATH")
+    driver.get(url=URL)
+
+    search_box = driver.find_element_by_id('keyword')
+    search_box.send_keys(arg)
+    search_box.send_keys(Keys.RETURN)
+
+    time.sleep(1)
+    string = ''
+    # (driver.find_element_by_id('card_image_0_1').get_attribute("src")) 카드 이미지 링크
+
+    string += '카드명:' + driver.find_element_by_id('card_image_0_1').get_attribute('alt') + '\n'
+    string += '설명:' + driver.find_element_by_class_name("card_info_species_and_other_item").text + '\n'
+    string += '속성:' + driver.find_element_by_class_name("box_card_attribute").text + '\n'
+    string += '공격력:' + driver.find_element_by_class_name("atk_power").text + '\n'
+    string += '수비력:' + driver.find_element_by_class_name("def_power").text + '\n'
+    string += '효과:' + driver.find_element_by_xpath(
+        "//dl[@class='flex_1']/dd[@class='box_card_text c_text flex_1']").text
+
+    await ctx.send(string)
 
 
 # 우라라 리스트 명령어
