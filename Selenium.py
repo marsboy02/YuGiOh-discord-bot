@@ -20,6 +20,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), c
 
 URL = 'https://www.db.yugioh-card.com/yugiohdb/card_search.action'
 
+
 def search(input):
     driver = webdriver.Chrome("CHROMEDRIVER_PATH")
     driver.get(url=URL)

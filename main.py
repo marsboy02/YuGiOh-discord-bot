@@ -1,22 +1,10 @@
 import os
 import discord
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from Selenium import *
 from functions import backtick
 from Handtrap import Urara, Warasi
 from tier_deck_list.season5 import tier
 from discord.ext import commands
-
-# 크롤링 환경 설정
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-URL = 'https://www.db.yugioh-card.com/yugiohdb/card_search.action'
 
 # 헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
@@ -57,26 +45,10 @@ async def 명령어(ctx):
 # 카드 서칭 명령어
 @bot.command()
 async def 서치(ctx, arg):
-    driver = webdriver.Chrome("CHROMEDRIVER_PATH")
-    driver.get(url=URL)
-
-    search_box = driver.find_element_by_id('keyword')
-    search_box.send_keys(arg)
-    search_box.send_keys(Keys.RETURN)
-
-    time.sleep(1)
-    string = ''
-    # (driver.find_element_by_id('card_image_0_1').get_attribute("src")) 카드 이미지 링크
-
-    string += '카드명:' + driver.find_element_by_id('card_image_0_1').get_attribute('alt') + '\n'
-    string += '설명:' + driver.find_element_by_class_name("card_info_species_and_other_item").text + '\n'
-    string += '속성:' + driver.find_element_by_class_name("box_card_attribute").text + '\n'
-    string += '공격력:' + driver.find_element_by_class_name("atk_power").text + '\n'
-    string += '수비력:' + driver.find_element_by_class_name("def_power").text + '\n'
-    string += '효과:' + driver.find_element_by_xpath(
-        "//dl[@class='flex_1']/dd[@class='box_card_text c_text flex_1']").text
-
-    await ctx.send(string)
+    if arg is not None:
+        await ctx.send(search(arg))
+    else:
+        await ctx.senf(backtick('다시 입력해 주세요!'))
 
 
 # 우라라 리스트 명령어
