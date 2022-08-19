@@ -9,8 +9,12 @@
 
 ## 개발환경
 ``` 
-$ pip install -r requirements.txt // 개발환경 복사
-$ python3 main.py // 실행
+$ python3 -r venv .venv
+가상환경 세팅
+$ source venv/bin/activate
+가상환경 실행
+$ python3 main.py 
+실행
 ```
 
 ## 파일 설명

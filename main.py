@@ -1,8 +1,8 @@
 import os
 import discord
-from Selenium import *
+from selenium import *
 from functions import backtick
-from Handtrap import Urara, Warasi
+from handtrap import Urara, Warasi
 from tier_deck_list.season5 import tier
 from discord.ext import commands
 
