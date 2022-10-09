@@ -3,3 +3,4 @@ discord.py==1.7.3
 py==1.10.0
 webdriver-manager==3.8.0
 selenium==3.141.0
+python-dotenv==0.20.0

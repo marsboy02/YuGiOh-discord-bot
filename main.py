@@ -5,6 +5,10 @@ from functions import backtick
 from handtrap import Urara, Warasi
 from season5 import tier
 from discord.ext import commands
+from dotenv import load_dotenv
+
+# load .env
+load_dotenv()
 
 # 헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
