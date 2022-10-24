@@ -1,8 +1,8 @@
 import os
 import discord
-from functions import backtick
-from handtrap import Urara, Warasi
-from season5 import tier
+from infra.functions import backtick
+from informations.handtrap import Urara, Warasi
+from informations.season5 import tier
 from discord.ext import commands
 from dotenv import load_dotenv
 
