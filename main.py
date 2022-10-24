@@ -1,6 +1,5 @@
 import os
 import discord
-from selenium import *
 from functions import backtick
 from handtrap import Urara, Warasi
 from season5 import tier
@@ -44,16 +43,6 @@ async def 명령어(ctx):
     embed.set_footer(text="Summoned by 강형준#5876",
                      icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
     await ctx.send(embed=embed)
-
-
-# 카드 서칭 명령어
-@bot.command()
-async def 서치(ctx, arg):
-    if arg is not None:
-        await ctx.send(search(arg))
-    else:
-        await ctx.senf(backtick('다시 입력해 주세요!'))
-
 
 # 우라라 리스트 명령어
 @bot.command()
