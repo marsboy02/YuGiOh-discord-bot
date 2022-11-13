@@ -1,5 +1,6 @@
 import os
 import discord
+import requests
 from infra.functions import backtick
 from informations.handtrap import Urara, Warasi
 from informations.season5 import tier
@@ -18,6 +19,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+URL = 'http://localhost:3000'
 
 @bot.event
 async def on_ready():
@@ -43,6 +45,12 @@ async def 명령어(ctx):
     embed.set_footer(text="Summoned by 강형준#5876",
                      icon_url="https://uploads3.yugioh.com/card_images/3946/detail/5736.jpg?1385135416")
     await ctx.send(embed=embed)
+
+
+@bot.command()
+async def 서치(ctx, arg):
+
+    await ctx.send(arg)
 
 # 우라라 리스트 명령어
 @bot.command()
