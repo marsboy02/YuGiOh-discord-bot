@@ -49,9 +49,9 @@ async def 명령어(ctx):
 
 @bot.command()
 async def 서치(ctx, arg):
-    url = default_url + 'card/search'
+    url = default_url + '/card/search/'
     res = get(url, arg)
-    await ctx.send(res)
+    await ctx.send(res.text)
 
 # 우라라 리스트 명령어
 @bot.command()
