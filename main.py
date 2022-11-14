@@ -1,6 +1,6 @@
 import os
 import discord
-import requests
+from infra.httpMethod import get
 from infra.functions import backtick
 from informations.handtrap import Urara, Warasi
 from informations.season5 import tier
@@ -19,7 +19,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-URL = 'http://localhost:3000'
+default_url = 'http://localhost:3000'
 
 @bot.event
 async def on_ready():
@@ -49,8 +49,9 @@ async def 명령어(ctx):
 
 @bot.command()
 async def 서치(ctx, arg):
-
-    await ctx.send(arg)
+    url = default_url + 'card/search'
+    res = get(url, arg)
+    await ctx.send(res)
 
 # 우라라 리스트 명령어
 @bot.command()
