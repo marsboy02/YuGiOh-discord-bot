@@ -12,6 +12,7 @@ load_dotenv()
 
 # 헤로쿠에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
+HOST_URL = os.environ.get('HOST_URL')
 
 # Intents 명시
 intents = discord.Intents.default()
@@ -19,7 +20,6 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-default_url = 'http://localhost:3000'
 
 @bot.event
 async def on_ready():
@@ -49,9 +49,9 @@ async def 명령어(ctx):
 
 @bot.command()
 async def 서치(ctx, arg):
-    url = default_url + '/card/search/'
+    url = HOST_URL + '/card/search/'
     res = get(url, arg)
-    await ctx.send(res.text)
+    await ctx.send(backtick(res.text))
 
 # 우라라 리스트 명령어
 @bot.command()
