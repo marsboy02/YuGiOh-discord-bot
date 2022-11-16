@@ -47,10 +47,13 @@ async def 명령어(ctx):
     await ctx.send(embed=embed)
 
 
-@bot.command()
-async def 서치(ctx, arg):
+@bot.command('서치')
+async def search(ctx, *args):
     url = HOST_URL + '/card/search/'
-    res = get(url, arg)
+    param = ''
+    for i in args:
+        param += i + ' '
+    res = get(url, param)
     await ctx.send(backtick(res.text))
 
 # 우라라 리스트 명령어
