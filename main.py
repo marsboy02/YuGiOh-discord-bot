@@ -54,7 +54,18 @@ async def search(ctx, *args):
     for i in args:
         param += i + ' '
     res = get(url, param)
-    await ctx.send(backtick(res.text))
+    jsonObject = res.json()
+
+    string = ''
+    string += '이름 : ' + jsonObject.get("card_name") + '\n'
+    string += '레벨 : ' + jsonObject.get("card_level") + '\n'
+    string += '종족 : ' + jsonObject.get("card_species") + '\n'
+    string += '공격력 : ' + jsonObject.get("card_atk") + '\n'
+    string += '방어력 : ' + jsonObject.get("card_def") + '\n'
+    string += '속성 : ' + jsonObject.get("card_attribute") + '\n'
+    string += '효과 : ' + jsonObject.get("card_effect") + '\n'
+
+    await ctx.send(backtick(string))
 
 # 우라라 리스트 명령어
 @bot.command()
