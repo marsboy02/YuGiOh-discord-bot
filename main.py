@@ -1,7 +1,6 @@
 import os
 import discord
-from infra.httpMethod import get
-from infra.functions import backtick
+from util.functions import backtick, get
 from informations.handtrap import Urara, Warasi
 from informations.season5 import tier
 from discord.ext import commands
