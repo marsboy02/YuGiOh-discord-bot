@@ -53,18 +53,14 @@ async def search(ctx, *args):
     for i in args:
         param += i + ' '
     res = get(url, param)
-    jsonObject = res.json()
-    print(jsonObject)
-    string = ''
-    string += addContent("이름", jsonObject.get("card_name"))
-    string += addContent("레벨", jsonObject.get("card_level"))
-    string += addContent("종족", jsonObject.get("card_species"))
-    string += addContent("공격력", jsonObject.get("card_atk"))
-    string += addContent("방어력", jsonObject.get("card_def"))
-    string += addContent("속성", jsonObject.get("card_attribute"))
-    string += addContent("효과", jsonObject.get("card_effect"))
+    json_object = res.json()
 
-    print(string)
+    string = ''
+    left_list = ["이름", "레벨", "종족", "공격력", "방어력", "속성", "효과"]
+    right_list = ["card_name", "card_level", "card_species", "card_atk", "card_def", "card_attribute", "card_effect"]
+    for i in range(len(left_list)):
+        string += addContent(left_list[i],json_object.get(right_list[i]))
+
     await ctx.send(backtick(string))
 
 # 우라라 리스트 명령어
