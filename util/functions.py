@@ -11,3 +11,9 @@ def get(url, parmas):
 def backtick(string):
     return '```' + string + '```'
 
+
+def addContent(key, value):
+    if value != '':
+        return key + ' : ' + value + '\n'
+    else:
+        return ''

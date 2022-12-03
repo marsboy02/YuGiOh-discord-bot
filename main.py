@@ -1,6 +1,6 @@
 import os
 import discord
-from util.functions import backtick, get
+from util.functions import backtick, get, addContent
 from informations.handtrap import Urara, Warasi
 from informations.season5 import tier
 from discord.ext import commands
@@ -54,16 +54,17 @@ async def search(ctx, *args):
         param += i + ' '
     res = get(url, param)
     jsonObject = res.json()
-
+    print(jsonObject)
     string = ''
-    string += '이름 : ' + jsonObject.get("card_name") + '\n'
-    string += '레벨 : ' + jsonObject.get("card_level") + '\n'
-    string += '종족 : ' + jsonObject.get("card_species") + '\n'
-    string += '공격력 : ' + jsonObject.get("card_atk") + '\n'
-    string += '방어력 : ' + jsonObject.get("card_def") + '\n'
-    string += '속성 : ' + jsonObject.get("card_attribute") + '\n'
-    string += '효과 : ' + jsonObject.get("card_effect") + '\n'
+    string += addContent("이름", jsonObject.get("card_name"))
+    string += addContent("레벨", jsonObject.get("card_level"))
+    string += addContent("종족", jsonObject.get("card_species"))
+    string += addContent("공격력", jsonObject.get("card_atk"))
+    string += addContent("방어력", jsonObject.get("card_def"))
+    string += addContent("속성", jsonObject.get("card_attribute"))
+    string += addContent("효과", jsonObject.get("card_effect"))
 
+    print(string)
     await ctx.send(backtick(string))
 
 # 우라라 리스트 명령어
