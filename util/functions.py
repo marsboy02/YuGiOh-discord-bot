@@ -3,8 +3,8 @@ import requests
 default_url = 'http://localhost:3000'
 
 
-def get(url, parmas):
-    uri = url + parmas
+def get(url, params):
+    uri = url + params
     return requests.get(uri)
 
 
@@ -17,3 +17,10 @@ def addContent(key, value):
         return key + ' : ' + value + '\n'
     else:
         return ''
+
+
+def makeStringWithSpace(*args):
+    string = ''
+    for i in args:
+        string += i + ' '
+    return string

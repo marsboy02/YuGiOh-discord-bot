@@ -1,6 +1,6 @@
 import os
 import discord
-from util.functions import backtick, get, addContent
+from util.functions import *
 from informations.handtrap import Urara, Warasi
 from informations.season5 import tier
 from discord.ext import commands
@@ -49,9 +49,7 @@ async def 명령어(ctx):
 @bot.command('서치')
 async def search(ctx, *args):
     url = HOST_URL + '/card/search/'
-    param = ''
-    for i in args:
-        param += i + ' '
+    param = makeStringWithSpace(*args)
     res = get(url, param)
     json_object = res.json()
 
