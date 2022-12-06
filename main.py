@@ -9,15 +9,16 @@ from dotenv import load_dotenv
 # load .env
 load_dotenv()
 
-# 헤로쿠에서 토큰 값 받아오기
+# cludetype.io에서 토큰 값 받아오기
 TOKEN = os.environ.get('TOKEN')
+PREFIX = os.environ.get("PREFIX")
 HOST_URL = os.environ.get('HOST_URL')
 
 # Intents 명시
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 
 @bot.event
