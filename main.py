@@ -54,13 +54,15 @@ async def search(ctx, *args):
     res = get(url, param)
     json_object = res.json()
 
-    string = ''
-    left_list = ["이름", "레벨", "종족", "공격력", "방어력", "속성", "효과"]
-    right_list = ["card_name", "card_level", "card_species", "card_atk", "card_def", "card_attribute", "card_effect"]
-    for i in range(len(left_list)):
-        string += addContent(left_list[i], json_object.get(right_list[i]))
-    if string == "":
+    if json_object.get('status') == 404:
         string = "해당하는 데이터를 찾지 못했습니다."
+    else:
+        string = ''
+        left_list = ["이름", "레벨", "종족", "공격력", "방어력", "속성", "효과"]
+        right_list = ["card_name", "card_level", "card_species", "card_atk", "card_def", "card_attribute", "card_effect"]
+        for i in range(len(left_list)):
+            string += addContent(left_list[i], json_object.get(right_list[i]))
+
     await ctx.send(backtick(string))
 
 # 우라라 리스트 명령어
