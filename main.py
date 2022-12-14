@@ -49,7 +49,7 @@ async def 명령어(ctx):
 
 @bot.command('서치')
 async def search(ctx, *args):
-    url = HOST_URL + '/card'
+    url = HOST_URL + '/card/'
     param = makeStringWithSpace(*args)
     res = get(url, param)
     json_object = res.json()
